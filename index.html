@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuerpo & Mente PRO — Transformación Total</title>
+
+    <!-- Tipografía Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #00c896;
+            --primary-dark: #00a37a;
+            --secondary: #0f6fff;
+            --bg: #050816;
+            --bg-soft: #0b1020;
+            --text: #f5f7ff;
+            --muted: #9aa0c2;
+            --card: rgba(15, 22, 40, 0.9);
+            --radius-lg: 18px;
+            --radius-md: 12px;
+            --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background: radial-gradient(circle at top, #101632 0, #050816 45%, #02030a 100%);
+            color: var(--text);
+            min-height: 100vh;
+            scroll-behavior: smooth;
+        }
+
+        /* Fondo con gradientes animados */
+        .bg-orbit {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            z-index: -2;
+        }
+
+        .bg-orbit::before,
+        .bg-orbit::after {
+            content: "";
+            position: absolute;
+            width: 520px;
+            height: 520px;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.55;
+            animation: float 18s infinite alternate ease-in-out;
+        }
+
+        .bg-orbit::before {
+            background: radial-gradient(circle, #00ffbf, #008cff);
+            top: -120px;
+            left: -80px;
+        }
+
+        .bg-orbit::after {
+            background: radial-gradient(circle, #ff7ce5, #5b5bff);
+            bottom: -160px;
+            right: -60px;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+            0% { transform: translate3d(0,0,0); }
+            100% { transform: translate3d(40px,-30px,0); }
+        }
+
+        /* Navbar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(18px);
+            background: linear-gradient(to bottom, rgba(5, 8, 22, 0.92), rgba(5, 8, 22, 0.65), transparent);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .nav-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-logo {
+            width: 34px;
+            height: 34px;
+            border-radius: 12px;
+            background: conic-gradient(from 210deg, #00ffbf, #0f6fff, #ff7ce5, #00ffbf);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 18px rgba(0, 255, 191, 0.6);
+        }
+
+        .brand-logo span {
+            font-size: 18px;
+            font-weight: 700;
+            color: #050816;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-text strong {
+            font-size: 18px;
+            letter-spacing: 0.04em;
+        }
+
+        .brand-text small {
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            font-size: 14px;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            position: relative;
+            padding-bottom: 2px;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 999px;
+            transition: width 0.25s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 6px;
+            padding: 3px;
+            border-radius: 999px;
+            background: rgba(10, 16, 40, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .lang-btn {
+            border: none;
+            border-radius: 999px;
+            padding: 5px 10px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--muted);
+            background: transparent;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #050816;
+            box-shadow: 0 0 12px rgba(0, 255, 191, 0.5);
+        }
+
+        /* Layout general */
+        .page {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 26px 20px 60px;
+        }
+
+        /* Hero */
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+            gap: 32px;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .hero-copy {
+            position: relative;
+        }
+
+        .hero-kicker {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        .hero-title {
+            font-size: clamp(32px, 4vw, 40px);
+            line-height: 1.1;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .hero-title span {
+            background: linear-gradient(120deg, #00ffbf, #0f6fff, #ff7ce5);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 14px;
+            color: var(--muted);
+            max-width: 480px;
+            margin-bottom: 18px;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            font-size: 11px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(10, 16, 40, 0.85);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--muted);
+        }
+
+        .badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #00ffbf, #0f6fff);
+            box-shadow: 0 0 10px rgba(0, 255, 191, 0.7);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn-primary,
+        .btn-ghost {
+            border-radius: 999px;
+            padding: 10px 18px;
+            font-size: 13px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #050816;
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.55);
+        }
+
+        .btn-primary span.icon {
+            font-size: 16px;
+        }
+
+        .btn-ghost {
+            background: rgba(10, 16, 40, 0.9);
+            color: var(--muted);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .hero-meta {
+            margin-top: 10px;
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        .hero-meta strong {
+            color: var(--text);
+        }
+
+        .hero-card {
+            border-radius: var(--radius-lg);
+            background: radial-gradient(circle at top left, rgba(0, 255, 191, 0.18), transparent 55%),
+                        radial-gradient(circle at bottom right, rgba(15, 111, 255, 0.18), transparent 55%),
+                        rgba(10, 16, 40, 0.92);
+            border: var(--glass-border);
+            box-shadow: var(--shadow-soft);
+            padding: 20px 18px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card-tag {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        .hero-card-main {
+            font-size: 14px;
+            margin-bottom: 14px;
+        }
+
+        .hero-card-main strong {
+            color: #ffffff;
+        }
+
+        .hero-card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .hero-mini {
+            border-radius: var(--radius-md);
+            background: rgba(5, 8, 22, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 10px;
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        .hero-mini strong {
+            display: block;
+            font-size: 12px;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+
+        .hero-pill {
+            font-size: 11px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(5, 8, 22, 0.9);
+            border: 1px solid rgba(0, 255, 191, 0.4);
+            color: var(--muted);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-pill span.dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #00ffbf, #0f6fff);
+        }
+
+        /* Secciones */
+        .section {
+            margin-top: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .section-sub {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        /* Productos */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+        }
+
+        .product-card {
+            border-radius: var(--radius-lg);
+            background: var(--card);
+            border: var(--glass-border);
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.55);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-media {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-media img {
+            width: 100%;
+            display: block;
+            height: 180px;
+            object-fit: cover;
+            transform: scale(1.02);
+            transition: transform 0.4s ease;
+        }
+
+        .product-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 10px;
+            padding: 4px 9px;
+            border-radius: 999px;
+            background: rgba(5, 8, 22, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: var(--muted);
+        }
+
+        .product-body {
+            padding: 14px 14px 13px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .product-title {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .product-desc {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 4px;
+        }
+
+        .product-price {
+            font-size: 15px;
+            font-weight: 600;
+            background: linear-gradient(120deg, #00ffbf, #0f6fff);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .product-cta {
+            margin-top: 8px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-pill {
+            flex: 1;
+            border-radius: 999px;
+            padding: 8px 10px;
+            font-size: 11px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            text-decoration: none;
+        }
+
+        .btn-pill.primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #050816;
+        }
+
+        .btn-pill.ghost {
+            background: rgba(5, 8, 22, 0.9);
+            color: var(--muted);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Sobre / Testimonios */
+        .split {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            border-radius: var(--radius-lg);
+            background: var(--card);
+            border: var(--glass-border);
+            box-shadow: var(--shadow-soft);
+            padding: 18px 16px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .card h3 {
+            font-size: 15px;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .pill {
+            font-size: 11px;
+            padding: 5px 9px;
+            border-radius: 999px;
+            background: rgba(5, 8, 22, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .testimonial {
+            font-size: 12px;
+            margin-top: 8px;
+            position: relative;
+            padding-left: 14px;
+        }
+
+        .testimonial::before {
+            content: "“";
+            position: absolute;
+            left: 0;
+            top: -4px;
+            color: var(--primary);
+            font-size: 18px;
+        }
+
+        .testimonial strong {
+            display: block;
+            margin-top: 4px;
+            color: var(--text);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 18px 20px 26px;
+            font-size: 11px;
+            color: var(--muted);
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(0, 255, 191, 0.08), transparent 55%);
+        }
+
+        footer span.brand-footer {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (max-width: 880px) {
+            .hero {
+                grid-template-columns: minmax(0, 1fr);
+            }
+            .hero-card {
+                order: -1;
+            }
+            .split {
+                grid-template-columns: minmax(0, 1fr);
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .page {
+                padding-inline: 16px;
+            }
+            .hero-card-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-orbit"></div>
+
+<header class="navbar">
+    <div class="nav-inner">
+        <div class="brand">
+            <div class="brand-logo">
+                <span>CM</span>
+            </div>
+            <div class="brand-text">
+                <strong>Cuerpo & Mente PRO</strong>
+                <small id="nav-tagline">Transformación real, resultados medibles</small>
+            </div>
+        </div>
+
+        <nav class="nav-links">
+            <a href="#products" id="nav-products">Productos</a>
+            <a href="#about" id="nav-about">Sobre</a>
+            <a href="#testimonials" id="nav-testimonials">Resultados</a>
+        </nav>
+
+        <div class="lang-switch">
+            <button class="lang-btn active" data-lang="es">ES</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+    </div>
+</header>
+
+<main class="page">
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-copy">
+            <div class="hero-kicker" id="hero-kicker">
+                Bienestar • Alto rendimiento • Hábitos sostenibles
+            </div>
+            <h1 class="hero-title" id="hero-title">
+                Diseña un <span>cuerpo fuerte</span> y una <span>mente enfocada</span> con un sistema que sí puedes mantener.
+            </h1>
+            <p class="hero-subtitle" id="hero-subtitle">
+                Programas, guías y herramientas accionables para personas ocupadas que quieren resultados reales sin vivir en el gimnasio ni contar calorías todo el día.
+            </p>
+
+            <div class="hero-badges">
+                <div class="badge">
+                    <span class="badge-dot"></span>
+                    <span id="hero-badge-1">Protocolos claros, paso a paso</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-dot"></span>
+                    <span id="hero-badge-2">Enfoque en energía, no solo estética</span>
+                </div>
+            </div>
+
+            <div class="hero-actions">
+                <a href="#products" class="btn-primary" id="hero-cta-main">
+                    <span>Ver programas y guías</span>
+                    <span class="icon">↗</span>
+                </a>
+                <a href="#about" class="btn-ghost" id="hero-cta-secondary">
+                    <span>Cómo funciona el sistema</span>
+                </a>
+            </div>
+
+            <p class="hero-meta" id="hero-meta">
+                <strong>Ideal para:</strong> personas que quieren estructura, claridad y resultados medibles en 4–12 semanas.
+            </p>
+        </div>
+
+        <aside class="hero-card">
+            <div class="hero-card-tag" id="hero-card-tag">
+                Panel de resultados
+            </div>
+            <p class="hero-card-main" id="hero-card-main">
+                <strong>+72%</strong> de adherencia cuando sigues un sistema simple con métricas claras de energía, sueño y entrenamiento.
+            </p>
+
+            <div class="hero-card-grid">
+                <div class="hero-mini">
+                    <strong id="hero-mini-1-title">Energía diaria</strong>
+                    <span id="hero-mini-1-text">Checklist de 5 minutos para empezar el día alineado con tus objetivos.</span>
+                </div>
+                <div class="hero-mini">
+                    <strong id="hero-mini-2-title">Entrenos inteligentes</strong>
+                    <span id="hero-mini-2-text">Rutinas adaptadas a tiempo limitado y sin equipamiento complejo.</span>
+                </div>
+            </div>
+
+            <div class="hero-pill" id="hero-pill">
+                <span class="dot"></span>
+                <span>Diseñado para personas reales, con vidas reales.</span>
+            </div>
+        </aside>
+    </section>
+
+    <!-- PRODUCTOS -->
+    <section class="section" id="products">
+        <div class="section-header">
+            <div>
+                <h2 class="section-title" id="products-title">Programas y recursos premium</h2>
+                <p class="section-sub" id="products-sub">
+                    Elige el formato que mejor encaje con tu momento: ebook, programa guiado o toolkit completo.
+                </p>
+            </div>
+        </div>
+
+        <div class="products-grid" id="products-grid"></div>
+    </section>
+
+    <!-- SOBRE / TESTIMONIOS -->
+    <section class="section">
+        <div class="split">
+            <article class="card" id="about">
+                <h3 id="about-title">Un sistema pensado para que no abandones a la semana 3</h3>
+                <p id="about-text">
+                    Cuerpo & Mente PRO nace de una idea simple: la mayoría de los planes fallan porque son imposibles de sostener
+                    en la vida real. Por eso diseñamos recursos que se integran en tu agenda, no que la destruyen.
+                </p>
+                <p id="about-text-2">
+                    Cada producto está construido con tres pilares: claridad (sabes exactamente qué hacer), flexibilidad (puedes
+                    adaptarlo a tu contexto) y medición (ves el progreso, aunque sea pequeño).
+                </p>
+
+                <div class="pill-row">
+                    <span class="pill" id="about-pill-1">Protocolos accionables</span>
+                    <span class="pill" id="about-pill-2">Sin lenguaje técnico innecesario</span>
+                    <span class="pill" id="about-pill-3">Enfoque en hábitos sostenibles</span>
+                </div>
+            </article>
+
+            <article class="card" id="testimonials">
+                <h3 id="testimonials-title">Personas reales, cambios medibles</h3>
+
+                <div class="testimonial" id="t1">
+                    Bajé la intensidad pero subí la constancia. En 8 semanas tengo más energía que cuando entrenaba el doble.
+                    <strong>Laura — 34 años, agenda llena</strong>
+                </div>
+
+                <div class="testimonial" id="t2">
+                    Lo mejor es que no tengo que pensar: abro el plan, marco lo hecho y sigo con mi día.
+                    <strong>Marcos — Emprendedor</strong>
+                </div>
+
+                <div class="testimonial" id="t3">
+                    Por primera vez siento que mi plan de salud está diseñado para mi vida, no para alguien que vive en el gimnasio.
+                    <strong>Daniela — Madre y profesional</strong>
+                </div>
+            </article>
+        </div>
+    </section>
+</main>
+
+<footer>
+    © 2026 <span class="brand-footer">Cuerpo & Mente PRO</span> — Transformación con criterio, no con promesas vacías.
+</footer>
+
+<script>
+    const translations = {
+        es: {
+            navTagline: "Transformación real, resultados medibles",
+            navProducts: "Productos",
+            navAbout: "Sobre",
+            navTestimonials: "Resultados",
+
+            heroKicker: "Bienestar • Alto rendimiento • Hábitos sostenibles",
+            heroTitle: "Diseña un cuerpo fuerte y una mente enfocada con un sistema que sí puedes mantener.",
+            heroSubtitle: "Programas, guías y herramientas accionables para personas ocupadas que quieren resultados reales sin vivir en el gimnasio ni contar calorías todo el día.",
+            heroBadge1: "Protocolos claros, paso a paso",
+            heroBadge2: "Enfoque en energía, no solo estética",
+            heroCtaMain: "Ver programas y guías",
+            heroCtaSecondary: "Cómo funciona el sistema",
+            heroMeta: "Ideal para: personas que quieren estructura, claridad y resultados medibles en 4–12 semanas.",
+            heroCardTag: "Panel de resultados",
+            heroCardMain: "+72% de adherencia cuando sigues un sistema simple con métricas claras de energía, sueño y entrenamiento.",
+            heroMini1Title: "Energía diaria",
+            heroMini1Text: "Checklist de 5 minutos para empezar el día alineado con tus objetivos.",
+            heroMini2Title: "Entrenos inteligentes",
+            heroMini2Text: "Rutinas adaptadas a tiempo limitado y sin equipamiento complejo.",
+            heroPill: "Diseñado para personas reales, con vidas reales.",
+
+            productsTitle: "Programas y recursos premium",
+            productsSub: "Elige el formato que mejor encaje con tu momento: ebook, programa guiado o toolkit completo.",
+            buyNow: "Comprar ahora",
+            moreInfo: "Ver detalles",
+
+            aboutTitle: "Un sistema pensado para que no abandones a la semana 3",
+            aboutText: "Cuerpo & Mente PRO nace de una idea simple: la mayoría de los planes fallan porque son imposibles de sostener en la vida real. Por eso diseñamos recursos que se integran en tu agenda, no que la destruyen.",
+            aboutText2: "Cada producto está construido con tres pilares: claridad (sabes exactamente qué hacer), flexibilidad (puedes adaptarlo a tu contexto) y medición (ves el progreso, aunque sea pequeño).",
+            aboutPill1: "Protocolos accionables",
+            aboutPill2: "Sin lenguaje técnico innecesario",
+            aboutPill3: "Enfoque en hábitos sostenibles",
+
+            testimonialsTitle: "Personas reales, cambios medibles",
+            t1: "Bajé la intensidad pero subí la constancia. En 8 semanas tengo más energía que cuando entrenaba el doble.\nLaura — 34 años, agenda llena",
+            t2: "Lo mejor es que no tengo que pensar: abro el plan, marco lo hecho y sigo con mi día.\nMarcos — Emprendedor",
+            t3: "Por primera vez siento que mi plan de salud está diseñado para mi vida, no para alguien que vive en el gimnasio.\nDaniela — Madre y profesional"
+        },
+        en: {
+            navTagline: "Real transformation, measurable results",
+            navProducts: "Programs",
+            navAbout: "About",
+            navTestimonials: "Results",
+
+            heroKicker: "Well-being • High performance • Sustainable habits",
+            heroTitle: "Build a strong body and a focused mind with a system you can actually keep.",
+            heroSubtitle: "Programs, guides and tools for busy people who want real results without living at the gym or tracking every calorie.",
+            heroBadge1: "Clear, step-by-step protocols",
+            heroBadge2: "Energy-first, not just aesthetics",
+            heroCtaMain: "View programs and guides",
+            heroCtaSecondary: "How the system works",
+            heroMeta: "Perfect for: people who want structure, clarity and measurable results in 4–12 weeks.",
+            heroCardTag: "Results dashboard",
+            heroCardMain: "+72% adherence when you follow a simple system with clear metrics for energy, sleep and training.",
+            heroMini1Title: "Daily energy",
+            heroMini1Text: "5-minute checklist to start your day aligned with your goals.",
+            heroMini2Title: "Smart training",
+            heroMini2Text: "Routines adapted to limited time and simple equipment.",
+            heroPill: "Designed for real people, with real lives.",
+
+            productsTitle: "Premium programs and resources",
+            productsSub: "Choose the format that fits your season best: ebook, guided program or complete toolkit.",
+            buyNow: "Buy now",
+            moreInfo: "More details",
+
+            aboutTitle: "A system built so you don’t quit on week 3",
+            aboutText: "Cuerpo & Mente PRO was born from a simple idea: most plans fail because they’re impossible to sustain in real life. That’s why we design resources that fit into your schedule, not destroy it.",
+            aboutText2: "Every product is built on three pillars: clarity (you know exactly what to do), flexibility (you can adapt it to your context) and measurement (you see progress, even if it’s small).",
+            aboutPill1: "Actionable protocols",
+            aboutPill2: "No unnecessary jargon",
+            aboutPill3: "Focus on sustainable habits",
+
+            testimonialsTitle: "Real people, measurable change",
+            t1: "I lowered intensity but increased consistency. In 8 weeks I have more energy than when I trained twice as much.\nLaura — 34, busy schedule",
+            t2: "The best part is I don’t have to think: I open the plan, tick the boxes and move on with my day.\nMarcos — Entrepreneur",
+            t3: "For the first time I feel my health plan is designed for my life, not for someone who lives at the gym.\nDaniela — Mom & professional"
+        }
+    };
+
+    const products = [
+        {
+            id: "habits-ebook",
+            img: "https://images.pexels.com/photos/1552103/pexels-photo-1552103.jpeg?auto=compress&cs=tinysrgb&w=1200",
+            es: {
+                tag: "Ebook • Acción inmediata",
+                title: "Hábitos de Alto Rendimiento en 30 días",
+                desc: "Un plan claro para instalar 5 hábitos clave de energía, foco y descanso sin abrumarte.",
+                price: "$17"
+            },
+            en: {
+                tag: "Ebook • Immediate action",
+                title: "High Performance Habits in 30 Days",
+                desc: "A clear plan to install 5 key habits for energy, focus and recovery without overwhelm.",
+                price: "$17"
+            },
+            buyLink: "https://wa.me/1XXXXXXXXXX?text=Quiero%20el%20ebook%20de%20hábitos",
+            infoLink: "#"
+        },
+        {
+            id: "21days-program",
+            img: "https://images.pexels.com/photos/3823063/pexels-photo-3823063.jpeg?auto=compress&cs=tinysrgb&w=1200",
+            es: {
+                tag: "Programa guiado • 21 días",
+                title: "Transformación Total 21 Días",
+                desc: "Entrenamiento, hábitos y mentalidad en un sistema guiado con tareas diarias y seguimiento.",
+                price: "$47"
+            },
+            en: {
+                tag: "Guided program • 21 days",
+                title: "Total Transformation 21 Days",
+                desc: "Training, habits and mindset in a guided system with daily tasks and tracking.",
+                price: "$47"
+            },
+            buyLink: "https://tu-checkout-o-afiliado.com",
+            infoLink: "#"
+        },
+        {
+            id: "toolkit",
+            img: "https://images.pexels.com/photos/669577/pexels-photo-669577.jpeg?auto=compress&cs=tinysrgb&w=1200",
+            es: {
+                tag: "Toolkit completo",
+                title: "Cuerpo & Mente PRO Toolkit",
+                desc: "Plantillas, checklists y panel de métricas para gestionar tu salud como un proyecto serio.",
+                price: "$67"
+            },
+            en: {
+                tag: "Complete toolkit",
+                title: "Cuerpo & Mente PRO Toolkit",
+                desc: "Templates, checklists and metrics dashboard to manage your health like a serious project.",
+                price: "$67"
+            },
+            buyLink: "https://wa.me/1XXXXXXXXXX?text=Quiero%20el%20Toolkit%20Cuerpo%20y%20Mente%20PRO",
+            infoLink: "#"
+        }
+    ];
+
+    let currentLang = "es";
+
+    function renderProducts(lang) {
+        const grid = document.getElementById("products-grid");
+        grid.innerHTML = "";
+
+        products.forEach(p => {
+            const t = p[lang];
+            const card = document.createElement("article");
+            card.className = "product-card";
+            card.innerHTML = `
+                <div class="product-media">
+                    <img src="${p.img}" alt="${t.title}">
+                    <div class="product-tag">${t.tag}</div>
+                </div>
+                <div class="product-body">
+                    <h3 class="product-title">${t.title}</h3>
+                    <p class="product-desc">${t.desc}</p>
+                    <div class="product-meta">
+                        <span class="product-price">${t.price}</span>
+                    </div>
+                    <div class="product-cta">
+                        <a href="${p.buyLink}" target="_blank" class="btn-pill primary">
+                            ${translations[lang].buyNow}
+                        </a>
+                        <a href="${p.infoLink}" class="btn-pill ghost">
+                            ${translations[lang].moreInfo}
+                        </a>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    function applyTranslations(lang) {
+        const t = translations[lang];
+        currentLang = lang;
+
+        document.getElementById("nav-tagline").textContent = t.navTagline;
+        document.getElementById("nav-products").textContent = t.navProducts;
+        document.getElementById("nav-about").textContent = t.navAbout;
+        document.getElementById("nav-testimonials").textContent = t.navTestimonials;
+
+        document.getElementById("hero-kicker").textContent = t.heroKicker;
+        document.getElementById("hero-title").textContent = t.heroTitle;
+        document.getElementById("hero-subtitle").textContent = t.heroSubtitle;
+        document.getElementById("hero-badge-1").textContent = t.heroBadge1;
+        document.getElementById("hero-badge-2").textContent = t.heroBadge2;
+        document.getElementById("hero-cta-main").firstElementChild.textContent = t.heroCtaMain;
+        document.getElementById("hero-cta-secondary").textContent = t.heroCtaSecondary;
+        document.getElementById("hero-meta").textContent = t.heroMeta;
+
+        document.getElementById("hero-card-tag").textContent = t.heroCardTag;
+        document.getElementById("hero-card-main").innerHTML = `<strong>${t.heroCardMain.split(" ")[0]}</strong> ${t.heroCardMain.split(" ").slice(1).join(" ")}`;
+        document.getElementById("hero-mini-1-title").textContent = t.heroMini1Title;
+        document.getElementById("hero-mini-1-text").textContent = t.heroMini1Text;
+        document.getElementById("hero-mini-2-title").textContent = t.heroMini2Title;
+        document.getElementById("hero-mini-2-text").textContent = t.heroMini2Text;
+        document.getElementById("hero-pill").lastElementChild.textContent = t.heroPill;
+
+        document.getElementById("products-title").textContent = t.productsTitle;
+        document.getElementById("products-sub").textContent = t.productsSub;
+
+        document.getElementById("about-title").textContent = t.aboutTitle;
+        document.getElementById("about-text").textContent = t.aboutText;
+        document.getElementById("about-text-2").textContent = t.aboutText2;
+        document.getElementById("about-pill-1").textContent = t.aboutPill1;
+        document.getElementById("about-pill-2").textContent = t.aboutPill2;
+        document.getElementById("about-pill-3").textContent = t.aboutPill3;
+
+        document.getElementById("testimonials-title").textContent = t.testimonialsTitle;
+
+        const [t1Text, t1Name] = t.t1.split("\n");
+        const [t2Text, t2Name] = t.t2.split("\n");
+        const [t3Text, t3Name] = t.t3.split("\n");
+
+        document.getElementById("t1").innerHTML = `${t1Text}<strong>${t1Name}</strong>`;
+        document.getElementById("t2").innerHTML = `${t2Text}<strong>${t2Name}</strong>`;
+        document.getElementById("t3").innerHTML = `${t3Text}<strong>${t3Name}</strong>`;
+
+        renderProducts(lang);
+    }
+
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const lang = btn.dataset.lang;
+            document.querySelectorAll(".lang-btn").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            applyTranslations(lang);
+        });
+    });
+
+    applyTranslations("es");
+</script>
+
+</body>
+</html>
