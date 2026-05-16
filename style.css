@@ -1,27 +1,96 @@
+/* GENERAL */
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+}
+
+/* MENÚ SUPERIOR */
+.menu {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 30px;
+  z-index: 1000;
+}
+
+.menu .logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.menu ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.menu ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.menu ul li a:hover {
+  color: #25D366;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 120px 20px 60px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+/* PRODUCTOS */
 .productos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  padding: 40px 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 40px;
 }
 
 .producto {
-  background: #fff;
-  border-radius: 12px;
+  background: #ffffff;
+  color: #000;
+  border-radius: 16px;
   padding: 20px;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .producto:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
 }
 
+.img-producto {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+/* BOTÓN WHATSAPP */
 .btn-whatsapp {
   display: inline-block;
-  padding: 12px 20px;
+  padding: 14px 22px;
   background: #25D366;
   color: white;
   font-weight: bold;
@@ -32,5 +101,19 @@
 
 .btn-whatsapp:hover {
   background: #128C7E;
-  transform: scale(1.05);
+  transform: scale(1.07);
+}
+
+/* SECCIONES */
+.sobre, .contacto {
+  padding: 40px;
+  text-align: center;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 20px;
+  opacity: 0.7;
+  font-size: 14px;
 }
