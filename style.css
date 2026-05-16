@@ -1,0 +1,36 @@
+.productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 40px 20px;
+}
+
+.producto {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.producto:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}
+
+.btn-whatsapp {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #25D366;
+  color: white;
+  font-weight: bold;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-whatsapp:hover {
+  background: #128C7E;
+  transform: scale(1.05);
+}
