@@ -265,3 +265,36 @@ body {
     font-size: 32px;
   }
 }
+/* Logo en el menú */
+.logo {
+  height: 60px;
+  width: auto;
+  margin-right: 15px;
+}
+
+/* Logo en el footer */
+.footer-logo {
+  height: 80px;
+  width: auto;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+/* Ajustes responsive */
+@media (max-width: 768px) {
+  .logo {
+    height: 45px;   /* Más pequeño en tablets */
+  }
+  .footer-logo {
+    height: 60px;   /* Ajuste proporcional */
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    height: 35px;   /* Compacto en móviles */
+  }
+  .footer-logo {
+    height: 50px;   /* Centrado y reducido */
+  }
+}
