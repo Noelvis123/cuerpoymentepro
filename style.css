@@ -3,10 +3,13 @@
 }
 
 body {
+ body {
   margin: 0;
-  font-family: "Arial", sans-serif;
-  background: radial-gradient(circle at top, #1f3b4d 0, #0b141a 45%, #05080b 100%);
-  color: #fff;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f5f5f5; /* Fondo gris claro */
+  color: #111;              /* Texto oscuro para contraste */
+}
 }
 
 /* MENÚ SUPERIOR */
