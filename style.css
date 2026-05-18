@@ -3,12 +3,13 @@
 }
 
 body {
- body {
   margin: 0;
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  background-color: #f5f5f5; /* Fondo gris claro */
-  color: #111;              /* Texto oscuro para contraste */
+  background: linear-gradient(to bottom, #ffffff, #eaf6ff); /* Degradado blanco → azul suave */
+  color: #111; /* Texto oscuro para contraste */
+}
+
 }
 }
 
