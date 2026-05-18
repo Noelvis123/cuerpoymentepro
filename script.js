@@ -1,4 +1,4 @@
-// 🔹 Selector de idioma ES / EN con efecto deslizable
+// 🔹 Botón de idioma ES / EN con efecto deslizable
 const langToggle = document.getElementById('lang-toggle');
 let currentLang = 'es';
 
@@ -12,14 +12,17 @@ function updateLanguage(lang) {
   });
 }
 
-// Evento para deslizar el botón al cambiar idioma
+// Evento para cambiar idioma con animación deslizable
 langToggle.addEventListener('click', () => {
   const newLang = currentLang === 'es' ? 'en' : 'es';
   updateLanguage(newLang);
 
   // Animación de deslizamiento
-  langToggle.style.transition = "transform 0.3s ease";
-  langToggle.style.transform = "translateX(10px)";
+  langToggle.style.transition = "transform 0.3s ease, background 0.3s ease";
+  langToggle.style.transform = "translateX(12px)";
+  langToggle.style.background = newLang === 'en' ? "#25D366" : "#111";
+  langToggle.style.color = "#fff";
+
   setTimeout(() => {
     langToggle.style.transform = "translateX(0)";
   }, 300);
