@@ -302,19 +302,3 @@ body {
     height: 50px;   /* Centrado y reducido */
   }
 }
-/* Tarjetas de productos */
-.card {
-  background-color: #ffffff;   /* Fondo blanco */
-  color: #111;                 /* Texto oscuro */
-  border-radius: 8px;          /* Bordes redondeados */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Sombra suave */
-  padding: 20px;
-}
-/* Testimonios */
-.testimonial {
-  background-color: #ffffff;   /* Fondo blanco */
-  color: #111;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  padding: 20px;
-}
